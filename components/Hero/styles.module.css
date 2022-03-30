@@ -1,0 +1,27 @@
+.Hero {
+  @apply grid h-[calc(100vh/3)] place-content-center rounded-bl-[20px] rounded-br-[90px] bg-slate-600 bg-gradient-to-r  from-[#F9964F] to-[#F9C74F] shadow-lg;
+}
+
+.Hero__title {
+  @apply relative z-10 text-6xl font-bold tracking-wider text-white;
+}
+
+.Hero__logo {
+  @apply absolute -left-5 -bottom-5 -z-10 h-[150px] w-[150px] rounded-full border border-solid border-white bg-cyan-700 opacity-30 shadow-2xl;
+}
+
+.Register__hero {
+  @apply h-[calc(100vh/8)] rounded-bl-[20px] rounded-br-[20px] bg-gradient-to-r from-[#F9964F] to-[#F9C74F];
+}
+
+.Home__hero {
+  @apply flex h-[calc(100vh/3)] flex-col justify-between rounded-br-[20px] rounded-bl-[90px] bg-gradient-to-r from-[#F9964F] to-[#F9C74F] p-5;
+}
+
+.Home__logo {
+  @apply text-center text-3xl font-bold text-white;
+}
+
+.Home__userIndentification {
+  @apply self-end text-right;
+}

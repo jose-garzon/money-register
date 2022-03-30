@@ -1,0 +1,15 @@
+.Label {
+  @apply relative w-full cursor-pointer rounded-full border  bg-white py-2 text-center transition duration-700;
+}
+
+.Outline {
+  @apply absolute -inset-1 -z-10 rounded-full;
+}
+
+.Danger {
+  @apply bg-gradient-to-r from-[#F94144] to-[#F9C74F] peer-checked:text-white;
+}
+
+.Success {
+  @apply bg-gradient-to-r from-[#4EAE88] to-[#8DBD70] peer-checked:text-white;
+}

@@ -1,0 +1,7 @@
+.main {
+  @apply w-full rounded-3xl bg-gradient-to-r from-[#F9964F] to-[#F9C74F] py-2 text-lg text-white disabled:border-2 disabled:border-solid disabled:border-slate-700 disabled:from-slate-50 disabled:to-slate-50 disabled:text-slate-700;
+}
+
+.outline {
+  @apply flex w-full items-center justify-center rounded-3xl border-2 border-solid border-slate-700 py-1 text-slate-700;
+}
