@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react'
 import { ShowPassword } from './ShowPassword'
-import { FormErrors } from '../../hooks/useCustomForm'
+import { FormErrors } from '../../../hooks/useCustomForm'
 import { ErrorLabel } from '.'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

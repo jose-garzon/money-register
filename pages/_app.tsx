@@ -3,7 +3,7 @@ import '../styles/datePicker.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query'
-import { AuthNeeded } from '../components/AuthNeeded'
+import { AuthNeeded } from '../components/Atoms'
 import { Toaster, toast } from 'react-hot-toast'
 type ComponentProps = { auth: boolean }
 interface CustomAppProps extends Omit<AppProps, 'Component'> {

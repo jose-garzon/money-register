@@ -1,10 +1,8 @@
-import { Input } from '../components/Input'
+import { Input } from '../components/Atoms'
 import { FaUserAlt, FaEnvelope, FaLock } from 'react-icons/fa'
-import { Button } from '../components/Button'
-import { Link } from '../components/Link'
-import { RegisterHero } from '../components/Hero'
+import { Button, Link } from '../components/Atoms'
+import { RegisterHero, Modal } from '../components/Organisms'
 import { useRegister } from '../hooks/RegisterPage/logic'
-import { Modal } from '../components/Modal'
 import { FaDollarSign } from 'react-icons/fa'
 
 const Register = () => {

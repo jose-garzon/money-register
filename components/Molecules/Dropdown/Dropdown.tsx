@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Control, Controller, FieldValues, Path } from 'react-hook-form'
-import { Input } from '../Input'
-import { InputProps } from '../Input/Input'
+import { Input } from '../../Atoms'
+import { InputProps } from '../../Atoms/Input'
 import { DropdownItem } from './DropdownItem'
 
 interface OptionProps {

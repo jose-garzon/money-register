@@ -1,13 +1,16 @@
 import { FaCalendarAlt, FaDollarSign, FaListAlt, FaTags } from 'react-icons/fa'
-import { LoadingButton } from '../../components/Button'
-import { Header } from '../../components/Header'
-import { DatePicker, ErrorLabel, Input } from '../../components/Input'
-import { ExpenseRadio } from '../../components/Radio'
+import {
+  LoadingButton,
+  OverlayLoader,
+  DatePicker,
+  ErrorLabel,
+  Input,
+  CurrencyInput,
+} from '../../components/Atoms'
+import { Header } from '../../components/Organisms'
+import { ExpenseRadio, Dropdown } from '../../components/Molecules'
 import { useExpenses } from '../../hooks/ExpensesPage/logic'
 import { FaTrash } from 'react-icons/fa'
-import { Dropdown } from '../../components/Dropdown'
-import { OverlayLoader } from '../../components/Loaders'
-import { CurrencyInput } from '../../components/Input/CurrencyInput'
 
 const Expenses = () => {
   const {

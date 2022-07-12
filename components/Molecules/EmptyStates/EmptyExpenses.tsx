@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { FaClipboardList } from 'react-icons/fa'
-import { Button } from '../Button'
+import { Button } from '../../Atoms'
 
 const EmptyExpenses = () => {
   const router = useRouter()

@@ -1,10 +1,7 @@
-import { Hero } from '../components/Hero'
-import { Input } from '../components/Input'
+import { Hero } from '../components/Organisms'
+import { Input, GoogleButton, LoadingButton, Link } from '../components/Atoms'
 import { FaEnvelope, FaLock } from 'react-icons/fa'
-import { LoadingButton } from '../components/Button'
-import { Link } from '../components/Link'
 import { useLogin } from '../hooks/LoginPage/logic'
-import { GoogleButton } from '../components/Button/GoogleButton'
 
 const Login = () => {
   const { register, handleSubmit, doLogin, errors, loading, doGoogleLogin } =

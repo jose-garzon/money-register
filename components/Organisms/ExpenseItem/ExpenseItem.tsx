@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
 import { FC, MouseEventHandler } from 'react'
 import { FaAngleDoubleUp, FaAngleDoubleDown } from 'react-icons/fa'
-import { currencyFormatter } from '../../utils/moneyFormatter'
+import { currencyFormatter } from '../../../utils/moneyFormatter'
 
 interface ExpenseItemProps {
   amount: number

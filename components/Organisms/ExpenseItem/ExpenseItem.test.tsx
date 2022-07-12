@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { ExpenseItem } from '.'
-import { Expense } from '../../hooks/HomePage/expenses.types'
+import { Expense } from '../../../hooks/HomePage/expenses.types'
 
 const mockClick = jest.fn()
 const expense: Expense = {

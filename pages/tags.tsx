@@ -1,8 +1,7 @@
 import { FaTag } from 'react-icons/fa'
-import { Button } from '../components/Button'
-import { CreateTag } from '../components/CreateTag'
-import { Header } from '../components/Header'
-import { Input } from '../components/Input'
+import { Button, Input } from '../components/Atoms'
+import { CreateTag } from '../components/Molecules'
+import { Header } from '../components/Organisms'
 import { useTags } from '../hooks/TagsPage/logic'
 
 const Tags = () => {

@@ -1,19 +1,14 @@
-import { ExpenseItem } from '../components/ExpenseItem'
-import { HomeHero } from '../components/Hero'
-import { MonthPicker } from '../components/MonthPicker'
-import { CreateExpenseButton } from '../components/CreateExpenseButton'
-import { TagPicker } from '../components/TagPicker'
+import { HomeHero, ExpenseItem } from '../components/Organisms'
+import { MonthPicker, TagPicker, EmptyExpenses } from '../components/Molecules'
+import { CreateExpenseButton, ExpensesLoader, Tag } from '../components/Atoms'
 import { useHome } from '../hooks/HomePage/logic'
-import { Tag } from '../components/Tag'
 import { currencyFormatter } from '../utils/moneyFormatter'
-import { ExpensesLoader } from '../components/Loaders'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
 import tagsService from '../backend/tags'
 import expensesService from '../backend/expenses'
 import { FC } from 'react'
 import { HomeProps } from '../hooks/HomePage/expenses.types'
-import { EmptyExpenses } from '../components/EmptyExpenses'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context)
