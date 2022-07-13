@@ -60,7 +60,7 @@ const useExpenses = () => {
   const createExpense = handleSubmit((expenseForm) => {
     const createReq = {
       ...expenseForm,
-      email: email!,
+      email: email,
     }
     if (!expenseId) return createExpenseMutation.mutate(createReq)
     const editReq = { ...expenseForm, id: expenseId }

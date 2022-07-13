@@ -1,27 +1,28 @@
-# Next.js + Tailwind CSS Example
+# Money register app
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project allow you to register your daily finance movements.
 
-## Preview
+Website: [https://money-register.vercel.app/]
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## backlog
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+1. Design and develop the desktop views.
+2. Create the progressive web app to download it as a native app.
+3. Create the dashboard page to show the statistics of the user movements.
+4. Create the savings feature.
+5. Create the notification system.
 
-## Deploy your own
+## How to start
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+1. Clone the repository.
+2. Install dependencies. `npm install`.
+3. To run the dev server write the command `npm run dev`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Technologies
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. React.
+2. next.
+3. Typescript.
+4. Mongodb.
+5. Tailwind.
+6. Google Auth.
