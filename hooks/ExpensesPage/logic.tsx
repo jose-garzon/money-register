@@ -37,6 +37,7 @@ const useExpenses = () => {
   const email = session?.user?.email ?? ''
   const expenseId = router?.query?.id?.[0] ?? ''
   const typeInForm = watch('type')
+
   const goHome = () => {
     reset(defaultValues)
     router.push('/')
@@ -54,8 +55,11 @@ const useExpenses = () => {
     {
       enabled: !!expenseId,
       onSuccess: (data) => {
-        delete data.id
-        reset({ ...data, date: new Date(data.date) })
+        reset({
+          ...data,
+          amount: data.amount + '',
+          date: new Date(data.date),
+        })
       },
     }
   )

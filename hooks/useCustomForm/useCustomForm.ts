@@ -14,6 +14,7 @@ const useCustomForm = <T>({ schema, defaultValues }: CustomFormProps<T>) => {
     resolver: joiResolver(schema),
     shouldFocusError: true,
     defaultValues,
+    criteriaMode: 'all',
   })
   return form
 }

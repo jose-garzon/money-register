@@ -3,7 +3,7 @@ import { Tag } from '../TagsPage/tags.types'
 
 interface Expense {
   id?: string
-  amount: number
+  amount: string
   date: Date
   description: string
   type: 'income' | 'expense'

@@ -1,6 +1,7 @@
 import Joi from 'joi'
 
 const ExpenseSchema = Joi.object({
+  id: Joi.string().optional().allow(''),
   description: Joi.string().required().messages({
     'string.empty': 'Este campo es requerido',
   }),
