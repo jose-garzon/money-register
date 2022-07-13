@@ -51,7 +51,13 @@ const useExpenses = () => {
   const expenseDetail = useQuery(
     ['getExpenseDetail'],
     () => getExpenseDetail(expenseId),
-    { enabled: !!expenseId }
+    {
+      enabled: !!expenseId,
+      onSuccess: (data) => {
+        delete data.id
+        reset({ ...data, date: new Date(data.date) })
+      },
+    }
   )
   const createExpenseMutation = useMutation(postExpense, mutationConfig)
   const editExpenseMutation = useMutation(putExpense, mutationConfig)
