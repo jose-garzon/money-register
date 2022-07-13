@@ -5,7 +5,6 @@ import {
   DatePicker,
   ErrorLabel,
   Input,
-  CurrencyInput,
 } from '../../components/Atoms'
 import { Header } from '../../components/Organisms'
 import { ExpenseRadio, Dropdown } from '../../components/Molecules'
@@ -53,7 +52,7 @@ const Expenses = () => {
             {...register('description')}
             errors={errors}
           />
-          <CurrencyInput
+          <Input
             label="Monto"
             startIcon={FaDollarSign}
             placeholder="Monto"

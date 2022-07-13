@@ -34,61 +34,48 @@ const useExpenses = () => {
   })
   const router = useRouter()
   const { data: session } = useSession()
-  const email = session?.user?.email
-  const expenseId = router?.query?.id?.[0]!
+  const email = session?.user?.email ?? ''
+  const expenseId = router?.query?.id?.[0] ?? ''
   const typeInForm = watch('type')
-  const goHome = () => router.push('/')
+  const goHome = () => {
+    reset(defaultValues)
+    router.push('/')
+  }
 
-  const tags = useQuery(['getTags'], () => getTags(email!))
+  const mutationConfig = {
+    onSuccess: goHome,
+    useErrorBoundary: true,
+  }
+
+  const tags = useQuery(['getTags'], () => getTags(email))
   const expenseDetail = useQuery(
     ['getExpenseDetail'],
     () => getExpenseDetail(expenseId),
     { enabled: !!expenseId }
   )
-  const createExpenseMutation = useMutation(postExpense, {
-    onSuccess: goHome,
-    useErrorBoundary: true,
-  })
-  const editExpenseMutation = useMutation(putExpense, {
-    onSuccess: goHome,
-    useErrorBoundary: true,
-  })
-  const deleteExpenseMutation = useMutation(deleteExpense, {
-    onSuccess: goHome,
-    useErrorBoundary: true,
-  })
+  const createExpenseMutation = useMutation(postExpense, mutationConfig)
+  const editExpenseMutation = useMutation(putExpense, mutationConfig)
+  const deleteExpenseMutation = useMutation(deleteExpense, mutationConfig)
 
   const createExpense = handleSubmit((expenseForm) => {
     const createReq = {
       ...expenseForm,
       email: email!,
     }
-    console.log(createReq)
-    // if (!expenseId) return createExpenseMutation.mutate(createReq)
-    // const editReq = { ...expenseForm, id: expenseId }
-    // return editExpenseMutation.mutate(editReq)
+    if (!expenseId) return createExpenseMutation.mutate(createReq)
+    const editReq = { ...expenseForm, id: expenseId }
+    return editExpenseMutation.mutate(editReq)
   })
 
   const handleDeleteExpense = () => {
-    if (expenseDetail?.data?.id)
+    if (expenseDetail?.data?.id) {
       return deleteExpenseMutation.mutate(expenseDetail?.data?.id)
+    }
   }
 
   useEffect(() => {
     if (typeInForm === 'income') setValue('tag', '')
   }, [typeInForm, setValue])
-
-  useEffect(() => {
-    if (expenseDetail.isSuccess && expenseId) {
-      const expense = {
-        ...expenseDetail.data,
-        date: new Date(expenseDetail.data.date),
-      }
-      delete expense.id
-      reset(expense)
-    }
-    return () => reset(defaultValues)
-  }, [expenseDetail.isSuccess, reset, expenseDetail.data, expenseId])
 
   return {
     createExpense,

@@ -3,28 +3,8 @@ import { MonthPicker, TagPicker, EmptyExpenses } from '../components/Molecules'
 import { CreateExpenseButton, ExpensesLoader, Tag } from '../components/Atoms'
 import { useHome } from '../hooks/HomePage/logic'
 import { currencyFormatter } from '../utils/moneyFormatter'
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
-import tagsService from '../backend/tags'
-import expensesService from '../backend/expenses'
 import { FC } from 'react'
 import { HomeProps } from '../hooks/HomePage/expenses.types'
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context)
-  const email = session?.user?.email
-  let tags = null
-  let expenses = null
-  if (email) {
-    tags = await tagsService.getTags(email)
-    expenses = await expensesService.getExpenses(
-      email,
-      undefined,
-      new Date().toString()
-    )
-  }
-  return { props: { tags, expenses } }
-}
 
 const Home: FC<HomeProps> = (props) => {
   const {
@@ -36,7 +16,7 @@ const Home: FC<HomeProps> = (props) => {
     setMonth,
     loading,
     goToexpenseDetail,
-  } = useHome({ tags: props.tags, expenses: props.expenses })
+  } = useHome()
 
   return (
     <>

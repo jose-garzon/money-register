@@ -17,9 +17,13 @@ const useTags = () => {
   const { data: session } = useSession()
   const email = session?.user?.email ?? ''
   const { data: tags, refetch } = useQuery(['getTags'], () => getTags(email!))
-  const createTagMutation = useMutation(postTag)
-  const updateTagMutation = useMutation(putTag)
-  const deleteTagMutation = useMutation(deleteTag)
+  const updateTagMutation = useMutation(putTag, { onSuccess: () => refetch() })
+  const createTagMutation = useMutation(postTag, {
+    onSuccess: clearTagForm,
+  })
+  const deleteTagMutation = useMutation(deleteTag, {
+    onSuccess: clearTagForm,
+  })
   const { register, watch, handleSubmit, reset } = useCustomForm<CreateTagForm>(
     {
       schema: CreateTagSchema,
@@ -35,6 +39,11 @@ const useTags = () => {
 
   const deleteOneTag = (id: string) => deleteTagMutation.mutate(id)
 
+  function clearTagForm() {
+    refetch()
+    reset()
+  }
+
   useEffect(() => {
     setFilteredTags(
       tags?.filter((tag) =>
@@ -42,17 +51,6 @@ const useTags = () => {
       )
     )
   }, [tagsSearch, tags])
-
-  useEffect(() => {
-    if (createTagMutation.isSuccess || deleteTagMutation.isSuccess) {
-      refetch()
-      reset()
-    }
-  }, [createTagMutation.isSuccess, deleteTagMutation.isSuccess, refetch, reset])
-
-  useEffect(() => {
-    if (updateTagMutation.isSuccess) refetch()
-  }, [updateTagMutation.isSuccess, refetch])
 
   return {
     tagsSearch,

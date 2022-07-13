@@ -3,7 +3,6 @@ import { useMutation } from 'react-query'
 import { useCustomForm } from '../useCustomForm'
 import { RegisterSchema } from './schema'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { postUser, UserType } from '../../apiRequests/users'
 
 const useRegister = () => {
@@ -15,7 +14,13 @@ const useRegister = () => {
   } = useCustomForm<UserType>({ schema: RegisterSchema })
   const router = useRouter()
 
-  const mutation = useMutation(postUser)
+  const mutation = useMutation(postUser, {
+    onError: (error) => {
+      const { response } = error as AxiosError
+      if (response?.data.code === 'user.exists')
+        setError('email', { message: 'Este usuario ya está registrado' })
+    },
+  })
 
   const goLogin = () => router.push('/login')
 
@@ -23,14 +28,6 @@ const useRegister = () => {
     delete userData.confirm_password
     mutation.mutate(userData)
   }
-
-  useEffect(() => {
-    if (mutation.isError) {
-      const { response } = mutation.error as AxiosError
-      if (response?.data.code === 'user.exists')
-        setError('email', { message: 'Este usuario ya está registrado' })
-    }
-  }, [mutation.error, mutation.isError, setError])
 
   return { register, handleSubmit, doRegister, errors, mutation, goLogin }
 }

@@ -7,19 +7,13 @@ import { getTags } from '../../apiRequests/tags'
 import type { Tag } from '../TagsPage/tags.types'
 import { Expense } from './expenses.types'
 
-interface InitialValues {
-  tags: Tag[]
-  expenses: Expense[]
-}
-
-const useHome = (initial: InitialValues) => {
+const useHome = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const email = session?.user?.email!
   const [month, setMonth] = useState<Date>(() => new Date())
   const [tagsFilter, setTagsFilter] = useState<Tag[]>([])
   const tags = useQuery<Tag[]>(['getTags'], () => getTags(email!), {
-    initialData: initial.tags,
     useErrorBoundary: true,
   })
   const totalMoney = useQuery(['getTotal'], () => getTotal(email!), {
@@ -37,7 +31,6 @@ const useHome = (initial: InitialValues) => {
       }),
     {
       enabled: tagsFilter.length > 0,
-      initialData: initial.expenses,
       useErrorBoundary: true,
     }
   )

@@ -5,7 +5,7 @@ export {
   Button,
   CreateExpenseButton,
 } from './Button'
-export { Input, ErrorLabel, DatePicker, CurrencyInput } from './Input'
+export { Input, ErrorLabel, DatePicker } from './Input'
 export { Link } from './Link'
 export {
   ExpensesLoader,
